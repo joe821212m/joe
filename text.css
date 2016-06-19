@@ -1,192 +1,208 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-body {
-  line-height: 1;
-}
-ol, ul {
-  list-style: none;
-}
-blockquote, q {
-  quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
+body {   
+    background-image:url(../images/bg_html.jpg);
+     } 
 .wrap{
-  width: 881px;
- margin-right: auto;
-  margin-left: auto;
-}
+  position: relative;
+  margin: 0 auto;
+  width: 950px;
 
+  text-align: left;
+  margin-top: 25px;
+
+}
 .header{
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f1f1f1+64,e1e1e1+82,f6f6f6+100;White+Gloss+%231 */
-background: #ffffff; /* Old browsers */
-background: -moz-linear-gradient(top,  #ffffff 0%, #f1f1f1 64%, #e1e1e1 82%, #f6f6f6 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  #ffffff 0%,#f1f1f1 64%,#e1e1e1 82%,#f6f6f6 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  #ffffff 0%,#f1f1f1 64%,#e1e1e1 82%,#f6f6f6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 ); /* IE6-9 */
-
-border-width:1px;
- border-style:ridge; 
-
-}
-.try{
-  width: 881px;
-display:inline;
-  margin-bottom: 5px; 
-  font-size: 12px;
-  font-family:Verdana;
-  text-align : center;
-  padding-left: 362px; 
-}
-.try li{
-padding:25px;  
-}
-.header ul{
-  margin-bottom: 0px; 
+    width: 950px;
+    height: 75px;
+    background-color: white;
+    color: #00bfff;
+    display: inline-block;
+    float: left;
+    font-family: 微軟正黑體;
+    font-size: 22px;
+    padding-top: 6px;
 }
 .header ul li{
+display:inline;
+}
+.header ul li a{
+  font-size: 24px; 
+ text-decoration: none;
   display:inline;
-  margin-bottom: 5px; 
-  font-size: 12px;
-  font-family:Verdana;
-  text-align : center;
-  padding-left: -20px;
-  padding:15px;  
+  color: #00bfff;
 }
-.clear{
-  clear:both;
+.try{
+  width: 150px;
+  height: 30px;
+  border-style:inset;
+  border-color:white;
+  float: right;
+  padding-bottom: 0px;
 }
-.content{
-width: 880px;
-height: 230px;
-border-width:1px;
- border-style:ridge;
-}
-.main{
-  
-  height: 230px;
-  width: 520px;
-  float: left;
-}
-.mean{
- background:url(demo.png) no-repeat;height: 180px;width: 250px;
-  float: right; 
-  font-size: 12px;
-  font-family:Verdana;
-  color: gray;
-  padding-top:50px; 
-  background-position:center;
-}
-.h1{
-  font-size:26px; 
-  color: #6495ed;
-  padding-left:20px; 
-  padding-top:15px; 
-  margin-bottom:20px; 
-  font-family:Verdana;
-}
-.h2{
-  font-size:14px;
-   padding-left:20px; 
-   color: gray;
-   font-family:Verdana;
-}
-.footer{
-  margin:0 auto;
-  width:880px;
-  overflow:hidden;
-  padding-top:20px;
-  padding-bottom:20px;
- border-width:1.5px;
- border-style:ridge;
-}
-.one{
-background: #f7fbfc; /* Old browsers */
-background: -moz-linear-gradient(top,  #f7fbfc 35%, #add9e4 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  #f7fbfc 35%,#add9e4 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  #f7fbfc 35%,#add9e4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7fbfc', endColorstr='#add9e4',GradientType=0 ); /* IE6-9 */
- padding-top: 10px;
- border-radius: 10px; 
-  width:260px;
+.contain{
   height: 300px;
-  float:left;
-  text-align : center;
-  margin-left:30px;
-  _display:inline;
 }
+
 .two{
- background: #f7fbfc; /* Old browsers */
-background: -moz-linear-gradient(top,  #f7fbfc 35%, #add9e4 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  #f7fbfc 35%,#add9e4 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  #f7fbfc 35%,#add9e4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7fbfc', endColorstr='#add9e4',GradientType=0 ); /* IE6-9 */
-padding-top: 10px;
- width:260px;
- height: 300px;
-  float:left;
-  text-align : center;
-  margin-left:30px;
-  _display:inline;
-  border-radius: 10px;
+    width: 250px;
+    height: 320px;
+    float: left;
+    margin: 0px 10px 0px 10px;
+    list-style-type:none; 
+}
+.product{
+ width:950px;
+　margin:0 auto;
 }
 .three{
-  background: #f7fbfc; /* Old browsers */
-background: -moz-linear-gradient(top,  #f7fbfc 35%, #add9e4 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  #f7fbfc 35%,#add9e4 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  #f7fbfc 35%,#add9e4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7fbfc', endColorstr='#add9e4',GradientType=0 ); /* IE6-9 */
-padding-top: 10px; 
-border-radius: 10px; 
-width:260px;
-height: 300px;
-  float:left;
-  text-align : center;
-  margin-left:30px;
-  _display:inline;
+    width: 250px;
+    height: 600px;
+    float: left;
+    margin: 0px 10px 0px 10px;
+    list-style-type:none;  
 }
-.h3{
-  color: gray;
-  font-family:Verdana;
+.product h1{
+  font-size: 20px;
+    font-family: 微軟正黑體;
+     text-align: center;
 }
-.h4{
-  font-size: 12px;
-  color: gray;
-  padding-left:5px; 
-  font-family:Verdana;
+.opentime{
+  
+    text-align: center;
+     font-size: 16px;
+     color:#b22222; 
+}
+.product h2 {
+  text-align: center;
+    font-size: 20px;
+     font-family: 微軟正黑體;
+     color: #f08080;
+}
+.one{
+   margin-top: 10px;
+   text-align: center;
+   font-size: 25px;
+   font-family: 微軟正黑體;
+   color: #00bfff;
+}
+.product p {
+    margin-top: 10px;
+    text-align: left;
+     font-size: 12px;
+}
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+textarea{
+  
+  background: #000;
+  border: 10px solid blue;
+  color:#fff;
+  display:none
+}
+select {
+background: transparent;
+width: 268px;
+padding: 5px;
+font-size: 16px;
+border: 1px solid #ccc;
+height: 34px;
+-webkit-appearance: none; /*for chrome*/
+}
+
+select {
+width: 240px;
+height: 34px;
+overflow: hidden;
+background: url(new_arrow.png) no-repeat right #ddd;
+}
+.back{
+  position: fixed;
+  bottom: 40px ; right: 30px;
+}
+.footer{
+  text-align: center;
+  display: block;
+}
+em {
+    color: #01a5ca;
+    font-style: normal;
+}
+@media only screen and (max-width: 767px) {
+  .wrap{
+    width: 100%;
+  }
+  .header{
+    height: auto;
+    width: 100%;
+  }
+  .header ul{
+  width: 100%;
+}
+  .header ul li a{
+    width: 100%
+  font-size: 24px; 
+ text-decoration: none;
+  display:inline;
+  color: #00bfff;
+}
+.product{
+  width: 100%;
+}
+.two{
+    width: 45%;
+    height: 320px;
+    float: left;
+    margin: 0px 10px 0px 10px;
+    list-style-type:none; 
+}
+.three{
+    width: 45%;
+    height: 700px;
+    float: left;
+    margin: 0px 10px 0px 10px;
+    list-style-type:none;  
+}
+@media only screen and (max-width: 425px) {
+.wrap{
+  width:100%;
+  margin:0px 0 0 0;
+}
+.header{
+  height: auto;
+  width: 100%;
+}
+.header ul{
+  width: 100%;
+}
+.header ul li {
+  font-size: 24px;
+  height:auto;
+  float:left; 
+ text-decoration: none;
+   margin-right: 20px;
+    margin-left: 20px;
+  color: #00bfff;
+}
+.product{
+  width: 100%;
+}
+.two{
+    width: 80%;
+    height: 320px;
+    float: left;
+    margin: 0px 10px 0px 10px;
+    list-style-type:none; 
+}
+.three{
+    width: 80%;
+    height: 600px;
+    float: left;
+    margin: 0px 10px 0px 10px;
+    list-style-type:none;  
+}
 }
