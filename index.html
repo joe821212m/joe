@@ -1,67 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>week3 hw</title>
+	<title>期末</title>
+ <script src="js/all.js"></script>
+ <script src="js/jquery-1.12.4.js"></script>
+  
 	<link rel="stylesheet" href="text.css" />
+
 </head>
 <body>
-<div class="wrap">
-<div class="header">
-<ul class="try">
-	<li><b>Register</b></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<li>Shop</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<li>Gift Cards</li>&nbsp;&nbsp;&nbsp;&nbsp;
-	<li>On Sale</li>&nbsp;&nbsp;&nbsp;&nbsp;
-	<li>New Products</li>
-<ul>
-<ul>
-    <li> <img src="logo.png">    
-    </li>
-	<li><img src="menu-1.png" title="Register" hspace="5" vspace="5">
-	</li>
-	<li><img src="menu-2.png"></li>
-	<li><img src="menu-3.png"></li>
-	<li><img src="menu-4.png"></li>
-	<li><img src="menu-5.png"></li>
-</ul>
-</div>
-  <div class="content">
+
+  <div class="wrap">
+   <div class="header">
+     <ul>
+     <li><a href="">聯絡我們&nbsp;&nbsp;</a></li>
+     <li><a href="">首頁&nbsp;&nbsp;</a></li>
+     <li><a href="http://data.kaohsiung.gov.tw/Opendata/DownLoad.aspx?Type=2&CaseNo1=AV&CaseNo2=2&FileType=1&Lang=C&FolderType=" target=_blank>網站資料來源&nbsp;&nbsp;</a></li>
+     <input type="text" class="try" placeholder="&nbsp;&nbsp;搜尋">
+     </ul>   
+   </div>  
+   <div class="product">
+   <div id="nurserysList">
+     <h2 class="one">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;歡迎參觀高雄美食</h2>
+         <select v-model="currentArea">
+                    <option>請選擇地區</option>
+                    <option v-for="area in areas">
+                        {{area}}
+                    </option>
+                </select>
+             <ul  class="clearfix">
+                    <template v-for="item in items">
+                        <template v-if="currentArea=='請選擇地區'">
+                            <li class="two">
+                            <h1>{{item.Name}}</h1>
+                            <img src="{{item.Picture1}}" height="250px" width="250px">
+                            </li>
+                        </template>
+                        <template v-if="item.area==currentArea">
+                        <li class="three">　
+                        <h2>{{item.Name}}</h2>
+                        <img src="{{item.Picture1}}" height="250px" width="250px"> 
+                        <a href="https://www.google.com.tw/maps/place/{{item.Add}}" target=_blank><img src="images/map.jpg" height="50px" width="50px"></a>         
+                          <p>{{item.Description}}</p>
+                          <p class="opentime">{{item.Opentime}}</p>&nbsp;&nbsp;<br/>
+                        </li>
+                        </template>
+                    </template>
+                </ul>
+                <script>
+                var apiURL = 'http://data.kaohsiung.gov.tw/Opendata/DownLoad.aspx?Type=2&CaseNo1=AV&CaseNo2=2&FileType=1&Lang=C&FolderType=';               
+                var nurserysList = new Vue({
+                    el: '#nurserysList'
+                    , data: {
+                        currentArea: '請選擇地區'
+                        , items: []
+                        , areas: []
+
+                    }
+                    , created: function () {
+                        this.fetchData();
+                    }
+                    , methods: {
+                        fetchData: function () {
+                            var self = this;
+                            $.ajax({
+                                type: 'GET'
+                                , url: apiURL
+                                , async: false
+                                , success: function (data) {
+                                    var thisData = JSON.parse(data);
+                                    for (var i in thisData) {
+                                        self.items.push(thisData[i]);
+                                    }
+                                }
+                            });
+                           
+                            var areaGroup = {};
+                            for (var i in self.items) {
+                                self.items[i].area = self.items[i].Add.substr(3, 3);
+                                var key = self.items[i].area;
+                                areaGroup[key] = areaGroup[key] || (areaGroup[key] = []);
+                                areaGroup[key].push(self.items[i].Name);
+                                
+                            }
+                            self.areas = Object.keys(areaGroup);
+                            console.log(JSON.stringify(areaGroup));
+
+                        }
+                    }
+                });
+
+            </script> 
+   </div>
+ </div> 
    
-    <div class="main">
-    <p class="h1"><b><u>Donec felis augue,sollicitudin</u></b></p>	
-    <p class="h2">The world saw the highest number of recorded executions in more than 25 years in 2015, according to a new report from human rights group Amnesty International.
-    In what the organization called an "alarming surge," at least 1,634 people were executed last year, an increase of more than 50% on 2014.
-    "The rise in executions last year is profoundly disturbing," said Salil Shetty, Amnesty International's Secretary General, in a statement.
-    According to the rights group's annual report the dramatic increase was fueled by three nations -- Iran, Pakistan and Saudi Arabia -- who together were responsible for nearly 90% of executions in 2015.
-    </p>
-    </div>
-    <div class="mean">
-    <br><br><br><br><br><br><br><br><br><br>Assorted Couches&nbsp;&nbsp;&nbsp;&nbsp;$209.00Each
-    </div>
-    	
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="footer">
-  	<div class="one">
-  	<img src="product-1.png">
-  	<p class="h3">Music & MP3 Players</p>
-  	<p class="h4">The world saw the highest number of recorded executions in more than 25 years in 2015, according to a new report from human rights group Amnesty International.</p>
-  	</div>
-  	<div class="two">
-  	<img src="product-2.png">
-  	<p class="h3">Computer Accessories</p>
-  	<p class="h4">The world saw the highest number of recorded executions in more than 25 years in 2015, according to a new report from human rights group Amnesty International.</p>
-  	</div>
-  	<div class="three">
-  	<img src="product-3.png">
-  	<p class="h3">Kids Toys</p>
-  	<p class="h4">The world saw the highest number of recorded executions in more than 25 years in 2015, according to a new report from human rights group Amnesty International.</p>
-  	</div>
-  	
-  </div>
-</div>
-	
+           
+      
+    <div class="back"><a href="#"><img src="images/back.jpg" width="70px" height="50px"></a></div>
+     <div class="footer"><br>
+      <p>
+            &copy; 2016 Graduation<br>
+      <em>Website Template</em> by ***
+      </p>
+      </div>
+  </div> 
+   
+ 
 </body>
 </html>
