@@ -1,62 +1,51 @@
-<!DOCTYPE html>
+<html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>期末</title>
- 
-   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <meta charset="UTF-8">
+    <title>高雄市托育/嬰服務中心</title>
+    <link rel="stylesheet" href="./assets/stylesheets/layout.css">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.min.js"></script>
-  
-	<link rel="stylesheet" href="text.css" />
-
 </head>
-<body>
 
-  <div class="wrap">
-   <div class="header">
-     <ul>
-     <li><a href="">聯絡我們&nbsp;&nbsp;</a></li>
-     <li><a href="">首頁&nbsp;&nbsp;</a></li>
-     <li><a href="http://data.kaohsiung.gov.tw/Opendata/DownLoad.aspx?Type=2&CaseNo1=AV&CaseNo2=2&FileType=1&Lang=C&FolderType=" target=_blank>網站資料來源&nbsp;&nbsp;</a></li>
-     <input type="text" class="try" placeholder="&nbsp;&nbsp;搜尋">
-     </ul>   
-   </div>  
-   <div class="product">
-   <div id="nurserysList">
-     <h2 class="one">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;歡迎參觀高雄美食</h2>
-         <select v-model="currentArea">
-                    <option>請選擇地區</option>
+<body>
+    <div class="header">
+        <a href="/">
+            <div class="header-title"><img src="assets/images/bottle.png" />高雄市托育/嬰服務中心</div>
+        </a>
+    </div>
+    <div class="wrap">
+        <div class="left-container">
+
+            <h1><img src="assets/images/bottle.png"/>托嬰中心查詢</h1>
+            <div id="nurserysList">
+                區:
+                <select v-model="currentArea">
+                    <option>全部地區</option>
                     <option v-for="area in areas">
                         {{area}}
                     </option>
                 </select>
-             <ul  class="clearfix">
+                <ul>
                     <template v-for="item in items">
-                        <template v-if="currentArea=='請選擇地區'">
-                            <li class="two">
-                            <h1>{{item.Name}}</h1>
-                            <img src="{{item.Picture1}}" height="250px" width="250px">
-                            </li>
+                        <template v-if="currentArea=='全部地區'">
+                            <li>{{item.org_Text}}</li>
                         </template>
                         <template v-if="item.area==currentArea">
-                        <li class="three">　
-                        <h2>{{item.Name}}</h2>
-                        <img src="{{item.Picture1}}" height="250px" width="250px"> 
-                        <a href="https://www.google.com.tw/maps/place/{{item.Add}}" target=_blank><img src="images/map.jpg" height="50px" width="50px"></a>         
-                          <p>{{item.Description}}</p>
-                          <p class="opentime">{{item.Opentime}}</p>&nbsp;&nbsp;<br/>
-                        </li>
+                            <li>{{item.org_Text}}</li>
                         </template>
                     </template>
                 </ul>
-                <script>
-                var apiURL = 'http://data.kaohsiung.gov.tw/Opendata/DownLoad.aspx?Type=2&CaseNo1=AV&CaseNo2=2&FileType=1&Lang=C&FolderType=';               
+            </div>
+            <script>
+                var apiURL = 'http://data.kaohsiung.gov.tw/Opendata/DownLoad.aspx?Type=2&CaseNo1=AE&CaseNo2=2&FileType=1&Lang=C&FolderType=';
+                var apiURL2 = 'http://data.kaohsiung.gov.tw/Opendata/DownLoad.aspx?Type=2&CaseNo1=AE&CaseNo2=1&FileType=1&Lang=C&FolderType=';
                 var nurserysList = new Vue({
                     el: '#nurserysList'
                     , data: {
-                        currentArea: '請選擇地區'
+                        currentArea: '全部地區'
                         , items: []
                         , areas: []
-
                     }
                     , created: function () {
                         this.fetchData();
@@ -75,37 +64,37 @@
                                     }
                                 }
                             });
-                           
+                            $.ajax({
+                                type: 'GET'
+                                , url: apiURL2
+                                , async: false
+                                , success: function (data) {
+                                    var thisData = JSON.parse(data);
+                                    for (var i in thisData) {
+                                        self.items.push(thisData[i]);
+                                    }
+                                }
+                            });
                             var areaGroup = {};
                             for (var i in self.items) {
-                                self.items[i].area = self.items[i].Add.substr(3, 3);
+                                self.items[i].area = self.items[i].informaddress.substr(3, 3);
                                 var key = self.items[i].area;
                                 areaGroup[key] = areaGroup[key] || (areaGroup[key] = []);
-                                areaGroup[key].push(self.items[i].Name);
-                                
+                                areaGroup[key].push(self.items[i].org_Text);
                             }
                             self.areas = Object.keys(areaGroup);
                             console.log(JSON.stringify(areaGroup));
-
                         }
                     }
                 });
+            </script>
 
-            </script> 
-   </div>
- </div> 
-   
-           
-      
-    <div class="back"><a href="#"><img src="images/back.jpg" width="70px" height="50px"></a></div>
-     <div class="footer"><br>
-      <p>
-            &copy; 2016 Graduation<br>
-      <em>Website Template</em> by ***
-      </p>
-      </div>
-  </div> 
-   
- 
+        </div>
+        <div class="right-container"></div>
+    </div>
+    <div class="footer">
+        <p>Copyright © 2016 史卯郁 楊竑昕 All rights reserved</p>
+    </div>
 </body>
+
 </html>
